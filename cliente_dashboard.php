@@ -8,32 +8,51 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 3) {
     exit;
 }
 
-$usuario_id = $_SESSION['usuario_id'];
+$usuario_id = intval($_SESSION['usuario_id']);
+$fecha_actual = new DateTime();
 
-// 1. CONSULTA DE PERFIL Y DÍAS RESTANTES
-$query_usuario = "SELECT u.nombre, u.color_tema, u.fecha_vencimiento, m.nombre as plan 
-                  FROM usuarios u 
-                  LEFT JOIN membresias m ON u.membresia_id = m.id 
-                  WHERE u.id = $usuario_id";
+// 1. CONSULTA DE PERFIL (Tabla usuarios)
+$query_usuario = "SELECT nombre, color_tema FROM usuarios WHERE id = $usuario_id";
 $resultado_usuario = mysqli_query($conexion, $query_usuario);
 $datos_atleta = mysqli_fetch_assoc($resultado_usuario);
 
-// Lógica del contador de días restantes
+// 2. CONSULTA DE MEMBRESÍA (Trae la última registrada en el historial del usuario)
+$query_membresia = "SELECT um.fecha_vencimiento, um.estado, m.nombre as plan 
+                    FROM usuario_membresias um 
+                    JOIN membresias m ON um.membresia_id = m.id 
+                    WHERE um.usuario_id = $usuario_id 
+                    ORDER BY um.id DESC LIMIT 1";
+$resultado_membresia = mysqli_query($conexion, $query_membresia);
+$datos_membresia = mysqli_fetch_assoc($resultado_membresia);
+
+// Lógica del contador de días restantes dinámico
+$nombre_plan = 'SIN PLAN ACTIVO';
 $dias_restantes = 0;
 $estado_membresia = "INACTIVO";
+$color_estado = '#ff4d4d'; // Rojo por defecto
 
-if ($datos_atleta['plan'] && !empty($datos_atleta['fecha_vencimiento'])) {
-    $fecha_actual = new DateTime();
-    $fecha_vence = new DateTime($datos_atleta['fecha_vencimiento']);
-    
-    if ($fecha_vence > $fecha_actual) {
-        $intervalo = $fecha_actual->diff($fecha_vence);
-        $dias_restantes = $intervalo->days;
-        $estado_membresia = "ACTIVO";
+if ($datos_membresia) {
+    // Validamos si la fecha de vencimiento aún es vigente
+    if (!empty($datos_membresia['fecha_vencimiento'])) {
+        $fecha_vence = new DateTime($datos_membresia['fecha_vencimiento']);
+        
+        if ($fecha_vence > $fecha_actual) {
+            $intervalo = $fecha_actual->diff($fecha_vence);
+            $dias_restantes = $intervalo->days;
+            
+            // Si tiene fecha vigente, forzamos el estado a ACTIVO
+            $nombre_plan = strtoupper($datos_membresia['plan']);
+            $estado_membresia = "ACTIVO";
+            $color_estado = '#4df44d'; // Verde brillante
+        } else {
+            $nombre_plan = strtoupper($datos_membresia['plan']);
+            $estado_membresia = "VENCIDO";
+            $color_estado = '#ff9900'; // Naranja
+        }
     }
 }
 
-// 2. CAPTURAR EL DÍA DE HOY EN ESPAÑOL PARA LA RUTINA EN VIVO
+// 3. CAPTURAR EL DÍA DE HOY EN ESPAÑOL PARA LA RUTINA EN VIVO
 $dias_semana_es = [
     'Monday'    => 'Lunes',
     'Tuesday'   => 'Martes',
@@ -46,7 +65,7 @@ $dias_semana_es = [
 $dia_actual_ingles = date('l');
 $dia_actual_es = $dias_semana_es[$dia_actual_ingles];
 
-// 3. CONSULTA DE LA RUTINA DEL DÍA
+// 4. CONSULTA DE LA RUTINA DEL DÍA
 $query_rutina = "SELECT r.descripcion, u.nombre as profesor 
                  FROM rutinas r 
                  JOIN usuarios u ON r.profesor_id = u.id 
@@ -67,7 +86,6 @@ $rutina_del_dia = mysqli_fetch_assoc($resultado_rutina);
     <style>
         /* Estilos específicos e inyectados para la atmósfera gótica de alas rojas */
         body {
-            /* Cambiamos el fondo por capas: gradiente oscuro purga y las alas rojas de fondo */
             background-image: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.93)), url('assets/img/fondos/alas-rojas.jpg');
         }
         .sidebar-gotica {
@@ -135,7 +153,7 @@ $rutina_del_dia = mysqli_fetch_assoc($resultado_rutina);
             <div class="tarjeta-metrica">
                 <h3>PLAN CONTRATADO</h3>
                 <div class="numero-metrica" style="font-size: 1.8rem; padding: 17px 0; color: #fff;">
-                    <?php echo $datos_atleta['plan'] ? strtoupper($datos_atleta['plan']) : 'SIN PLAN ACTIVE'; ?>
+                    <?php echo $nombre_plan; ?>
                 </div>
                 <p style="font-size: 0.75rem; color: #666;">MEMBRESÍA ACTUAL EN EL SISTEMA</p>
             </div>
@@ -143,14 +161,14 @@ $rutina_del_dia = mysqli_fetch_assoc($resultado_rutina);
             <div class="tarjeta-metrica">
                 <h3>TIEMPO RESTANTE</h3>
                 <div class="numero-metrica">
-                    <?php echo $estado_membresia === 'ACTIVO' ? $dias_restantes : '00'; ?>
+                    <?php echo $dias_restantes; ?>
                 </div>
                 <p style="font-size: 0.75rem; color: #666;">DÍAS DE ACCESO ANTES DEL VENCIMIENTO</p>
             </div>
 
             <div class="tarjeta-metrica">
                 <h3>ESTADO DE MENBRESIA</h3>
-                <div class="numero-metrica" style="font-size: 1.8rem; padding: 17px 0; color: <?php echo $estado_membresia === 'ACTIVO' ? '#4df44d' : '#ff4d4d'; ?>;">
+                <div class="numero-metrica" style="font-size: 1.8rem; padding: 17px 0; color: <?php echo $color_estado; ?>;">
                     <?php echo $estado_membresia; ?>
                 </div>
                 <p style="font-size: 0.75rem; color: #666;">ESTADO DE ENTRADA AL GIMNASIO</p>
