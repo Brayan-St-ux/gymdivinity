@@ -1,0 +1,174 @@
+/* ==========================================================================
+   ESTILOS DE TABLAS, CONTENEDORES Y MAQUETACIÓN INTERNA (PANEL CONTROL)
+   ========================================================================== */
+
+/* Layout de bloques distribuidos a dos columnas en pantallas anchas */
+.layout-bloques {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.bloque-formulario {
+    flex: 1;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid #ffd700;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.bloque-tabla {
+    flex: 2;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.layout-bloques h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+/* Formularios Internos */
+.campo-grupo {
+    margin-bottom: 20px;
+}
+
+.campo-grupo label {
+    display: block;
+    font-size: 0.75rem;
+    color: #999999;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.campo-grupo input, .campo-grupo textarea {
+    width: 100%;
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    
+    /* Permitir selección únicamente dentro de los campos de escritura */
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.campo-grupo input:focus, .campo-grupo textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+}
+
+.boton-formulario-neon {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #ffd700;
+    color: #ffffff;
+    padding: 13px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+}
+
+.boton-formulario-neon:hover {
+    background: #ffd700;
+    color: #000000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* --- TABLA GÓTICA --- */
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll si la tabla es más grande que la pantalla */
+}
+
+.tabla-gotica {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.tabla-gotica th {
+    font-family: 'Cinzel', serif;
+    background: #0a0a0a;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.tabla-gotica td {
+    padding: 14px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: #cccccc;
+}
+
+.tabla-gotica tr:hover td {
+    background: rgba(255, 215, 0, 0.02);
+    color: #ffffff;
+}
+
+.resaltado-dorado {
+    color: #ffd700 !important;
+    font-weight: 600;
+}
+
+.badge-puntos {
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Alertas de Sistema */
+.alerta-exito-sistema, .alerta-error-sistema {
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.alerta-exito-sistema {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid #00ff00;
+    color: #4df44d;
+}
+
+.alerta-error-sistema {
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px solid #ff0000;
+    color: #ff4d4d;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .layout-bloques {
+        flex-direction: column;
+    }
+    .bloque-formulario, .bloque-tabla {
+        width: 100%;
+    }
+}

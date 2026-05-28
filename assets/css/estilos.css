@@ -1,0 +1,1060 @@
+/* ==========================================================================
+   HOJA DE ESTILOS BASE Y NAVEGACIÓN GLOBAL PREMIUM (DARK MODE)
+   ========================================================================== */
+
+:root {
+    --fondo-principal: #050505;
+    --caja-oscura: rgba(15, 15, 15, 0.9);
+    --neon-dorado: #ffd700;
+    --neon-rojo: #ff0000;
+    --borde-sutil: rgba(255, 255, 255, 0.05);
+    --texto-brillante: #ffffff;
+    --texto-opaco: #999999;
+    --sidebar-width: 260px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fondo-principal);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../img/fondos/bg-admin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto-brillante);
+    display: flex;
+    min-height: 100vh;
+
+    /* ==========================================================================
+       BLOQUEO DE SELECCIÓN DE TEXTO (EVITA EL AZULADO POR DOBLE CLIC)
+       ========================================================================== */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+ / Edge */
+    user-select: none;         /* Estándar moderno (Chrome, Opera, etc.) */
+}
+/* --- MENÚ LATERAL (SIDEBAR GÓTICA) --- */
+.sidebar-gotica {
+    width: var(--sidebar-width);
+    background: #0a0a0a;
+    border-right: 1px solid var(--borde-sutil);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 100;
+}
+
+.brand-zona {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 20px;
+}
+
+.logo-nav {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 1px solid var(--neon-dorado);
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.brand-zona h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.menu-enlaces {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+}
+
+.menu-enlaces li a {
+    display: block;
+    color: var(--texto-opaco);
+    text-decoration: none;
+    padding: 12px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.menu-enlaces li a:hover, .menu-enlaces li a.activo {
+    color: #ffffff;
+    background: rgba(255, 215, 0, 0.04);
+    border-color: var(--neon-dorado);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.05);
+}
+
+.separador-logout {
+    margin-top: auto; /* Empuja el botón de cierre al fondo */
+}
+
+.menu-enlaces li a.logout-link {
+    border-color: var(--neon-rojo) !important;
+    color: #ff4d4d;
+}
+
+.menu-enlaces li a.logout-link:hover {
+    background: rgba(255, 0, 0, 0.1);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+}
+
+/* --- CONTENEDOR DE TRABAJO PRINCIPAL --- */
+.contenido-principal {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 40px;
+}
+
+.encabezado-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+}
+
+.saludo h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.saludo p {
+    font-size: 0.75rem;
+    color: var(--neon-dorado);
+    letter-spacing: 3px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.rango-badge {
+    border: 1px solid var(--neon-dorado);
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: rgba(255, 215, 0, 0.05);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    border-radius: 2px;
+}
+
+/* --- GRILLA DE TARJETAS INDICADORAS (KPI) --- */
+.grilla-kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1max));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.tarjeta-kpi {
+    background: var(--caja-oscura);
+    border: 1px solid var(--borde-sutil);
+    border-left: 3px solid var(--neon-dorado);
+    padding: 25px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.icono-kpi {
+    font-size: 2rem;
+}
+
+.datos-kpi h3 {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--texto-opaco);
+    margin-bottom: 5px;
+}
+
+.numero-kpi {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+}
+
+/* --- MURO DE INFORMACIÓN CENTRAL --- */
+.muro-noticias {
+    background: var(--caja-oscura);
+    border: 1px solid var(--borde-sutil);
+    padding: 30px;
+    border-radius: 4px;
+    line-height: 1.8;
+}
+
+.muro-noticias h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 10px;
+}
+
+.muro-noticias p {
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar-gotica {
+        width: 100%;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--borde-sutil);
+        padding: 20px;
+    }
+    .brand-zona {
+        margin-bottom: 20px;
+    }
+    .contenido-principal {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+    .encabezado-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+/* ==========================================================================
+   SISTEMA DE FONDOS GÓTICOS RESPONSIVOS E ILUMINADOS
+   ========================================================================== */
+
+/* Reglas base para que el fondo no se rompa en ninguna pantalla */
+body.fondo-staff-admin, 
+body.fondo-staff-profe, 
+body.fondo-atleta {
+    background-size: cover;
+    background-position: center center; /* Centra las alas perfectamente */
+    background-attachment: fixed;       /* El fondo se queda quieto al hacer scroll */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 1. ADMINISTRADOR: Capa con un tinte dorado sutil en los destellos */
+body.fondo-staff-admin {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.82), rgba(15, 12, 5, 0.88)), 
+                      url('../img/fondos/alas-doradas.jpg');
+}
+
+/* 2. PROFESOR: Capa con un toque cian frío */
+body.fondo-staff-profe {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(5, 12, 15, 0.90)), 
+                      url('../img/fondos/alas-cian.jpg');
+}
+
+/* 3. ATLETA: Capa con un fondo carmesí profundo */
+body.fondo-atleta {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(20, 5, 5, 0.88)), 
+                      url('../img/fondos/alas-rojas.jpg');
+}
+
+/* ==========================================================================
+   OPTIMIZACIÓN DE TARJETAS (MÁS LUZ Y LEGUIBILIDAD)
+   ========================================================================== */
+.bloque-formulario, .bloque-tabla, .tarjeta-metrica {
+    background: rgba(10, 10, 10, 0.83) !important; /* Un poco más sólido para separar del fondo */
+    backdrop-filter: blur(8px);                    /* Aumentamos el desenfoque del fondo */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Borde más brillante para dar luz */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);     /* Sombra profunda para dar volumen */
+    border-radius: 6px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+/* Títulos principales con reflejo de luz (Text Shadow) */
+h1, h2, h3 {
+    color: #ffffff !important;
+    letter-spacing: 1px;
+}
+
+body.fondo-staff-admin h1 { text-shadow: 0 0 12px rgba(255, 215, 0, 0.4); }
+body.fondo-staff-profe h1 { text-shadow: 0 0 12px rgba(0, 255, 255, 0.4); }
+body.fondo-atleta h1      { text-shadow: 0 0 12px rgba(255, 0, 0, 0.4); }
+
+/* Adaptación para Celulares y Tablets */
+@media (max-width: 768px) {
+    body {
+        background-position: center top; /* Ajusta las alas arriba en móviles */
+    }
+    .contenido-principal {
+        padding: 15px !important;
+    }
+    .layout-bloques {
+        display: flex;
+        flex-direction: column; /* Apila los bloques uno abajo del otro en pantallas chicas */
+        gap: 15px;
+    }
+}
+/* ==========================================================================
+   MÓDULO ADICIONAL: GESTIÓN DE ENTRENADORES Y ADMISIÓN DE ASPIRANTES (CORREGIDO)
+   ========================================================================== */
+
+/* Forzamos que la grilla ocupe todo el ancho útil del contenedor principal */
+.malla-forja {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 25px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Área de botones de control superior para el intercambio */
+.zona-intercambio-botones {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 15px;
+}
+
+.btn-intercambio {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--texto-opaco);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-intercambio.activo {
+    border-color: var(--neon-dorado);
+    color: var(--texto-brillante);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+}
+
+.burbuja-alerta {
+    background: var(--neon-rojo);
+    color: #ffffff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 0 8px var(--neon-rojo);
+}
+
+/* Campos de entrada internos */
+.campo-panel {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.campo-panel label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--texto-opaco);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.campo-panel input, .campo-panel textarea {
+    width: 100%;
+    background: rgba(20, 20, 20, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 12px;
+    color: var(--texto-brillante) !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+
+.campo-panel textarea {
+    resize: none;
+    height: 100px;
+}
+
+.btn-panel-neon {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--neon-dorado);
+    color: #ffffff;
+    padding: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-panel-neon:hover {
+    background: var(--neon-dorado);
+    color: #000000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Estructura de Tablas Hardcore */
+.tabla-hardcore {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.tabla-hardcore th, .tabla-hardcore td {
+    padding: 12px;
+    border-bottom: 1px solid var(--borde-sutil);
+    font-size: 0.85rem;
+}
+
+.tabla-hardcore th {
+    color: var(--texto-opaco);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+}
+
+.resaltado-neon {
+    color: var(--neon-dorado);
+    font-weight: 600;
+}
+
+.texto-vacio {
+    text-align: center;
+    color: var(--texto-opaco);
+    padding: 30px !important;
+    font-style: italic;
+}
+
+.texto-biografia-celda {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+    color: #888888;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--texto-brillante);
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    border-color: var(--neon-dorado);
+}
+
+.delete-btn {
+    border-color: rgba(255, 0, 0, 0.3);
+    color: #ff4d4d;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: var(--neon-rojo);
+}
+
+/* ==========================================================================
+   SISTEMA DE MODALES COMPLETAMENTE REESTRUCTURADO (CORRECCIÓN CRÍTICA)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(8px);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 9999 !important; /* Por encima de cualquier tabla o texto */
+    
+    /* Por defecto oculto sin ocupar espacio */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+/* Cuando JS inyecta la clase, se muestra al frente */
+.modal-overlay.activo {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+.modal-caja {
+    background: #0d0d0d !important;
+    border: 1px solid var(--borde-sutil) !important;
+    border-top: 3px solid var(--neon-dorado) !important;
+    width: 90% !important;
+    max-width: 460px !important;
+    padding: 30px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9) !important;
+    transform: scale(0.85) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.modal-overlay.activo .modal-caja {
+    transform: scale(1) !important;
+}
+
+.modal-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff !important;
+}
+
+.modal-campo {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.modal-campo label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--texto-opaco);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.modal-campo input, .modal-campo textarea {
+    width: 100%;
+    background: #141414 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 10px 12px;
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+}
+
+.modal-botones-zona {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.btn-modal-cancelar {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--texto-opaco);
+}
+
+.btn-modal-modificar {
+    background: transparent;
+    border: 1px solid var(--neon-dorado);
+    color: #ffffff;
+}
+
+.btn-modal-modificar:hover {
+    background: var(--neon-dorado);
+    color: #000000;
+}
+
+/* Controladores de ocultación de tablas */
+.oculto-inicial {
+    display: none !important;
+}
+
+.bloque-tabla-dinamica {
+    animation: fadeGoticoInterno 0.4s ease forwards;
+}
+
+@keyframes fadeGoticoInterno {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+    .malla-forja {
+        grid-template-columns: 1fr;
+    }
+}
+/* EL FONDO OSCURO CON TRANSPARENCIA */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75) !important; /* Permite ver el dashboard por detrás */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.activo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* CAJA MAESTRA DEL MODAL */
+.modal-caja-admin {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-top: 4px solid #ffd700; /* Línea dorada superior */
+    padding: 30px;
+    border-radius: 6px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+
+/* BOTÓN DE CIERRE ESTILIZADO */
+.btn-modal-cancelar-admin {
+    background: #1a1a1a;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.1);
+}
+
+.btn-modal-cancelar-admin:hover {
+    background: #ffd700;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+/* ESTILOS PARA LOS SELECTORES DEL FORMULARIO */
+.select-personalizado-admin {
+    width: 100%;
+    background: rgba(20, 20, 20, 0.8) !important;
+    border: 1px solid rgba(255, 215, 0, 0.2) !important;
+    padding: 12px;
+    color: #ffffff !important;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    appearance: none; /* Quita el diseño por defecto de Windows */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' fill='gold'><polygon points='0,0 100,0 50,50'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px;
+}
+
+.select-personalizado-admin option {
+    background: #0a0a0a !important;
+    color: #ffffff !important;
+    padding: 10px;
+}
+/* CONTEXTO DEL FORMULARIO DE CREACIÓN ADMINISTRATIVA */
+.bloque-formulario input,
+.bloque-formulario select,
+.bloque-formulario textarea,
+select {
+    background-color: #141414 !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    color: #ffffff !important;
+    padding: 12px !important;
+    border-radius: 4px !important;
+    font-family: 'Poppins', sans-serif !important;
+    appearance: none; /* Elimina el estilo clásico de Windows */
+}
+
+/* CAJA INTERNA DEL MODAL */
+.modal-caja-admin {
+    background: #0d0d0d !important;
+    border: 2px solid #ffd700 !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* BOTÓN DE CIERRE CON ESTILO DE BOTÓN OSCURO */
+#btn-cerrar-admin,
+.btn-modal-cancelar-admin,
+#modal-guerreros button {
+    background-color: #141414 !important;
+    color: #ffd700 !important;
+    border: 1px solid #ffd700 !important;
+    padding: 10px 20px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+#btn-cerrar-admin:hover,
+.btn-modal-cancelar-admin:hover {
+    background-color: #ffd700 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
+}
+/* DISEÑO GENERAL DEL CONTENEDOR DASHBOARD */
+.interfaz-contenedor {
+    display: flex;
+    min-height: 100vh;
+}
+
+.contenido-principal {
+    flex: 1;
+    padding: 40px;
+    background-color: #050505; /* Fondo negro profundo */
+}
+
+/* CUADRÍCULA EN GRID PARA LOS CUADROS REBELDES */
+.cuadrula-planes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* ESTILO BASE DE CADA CUADRO */
+.cuadro-plan {
+    background-color: #0f0f0f;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cuadro-plan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* RESALTE PARA EL PLAN ACTIVO QUE TIENE EL GUERRERO */
+.plan-activo-borde {
+    border: 2px solid #ffd700 !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+}
+
+.etiqueta-estado {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #00cc44;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+/* TIPOGRAFÍAS INTERNAS */
+.nombre-plan {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.precio-caja {
+    color: #ffd700; /* Color oro característico */
+    margin-bottom: 20px;
+}
+
+.monto {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.descripcion-texto {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    height: 60px; /* Alineación uniforme */
+}
+
+/* ESTILO DE LOS TRES BOTONES */
+.acciones-plan button {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+/* Botón Seleccionar (Cambiar) */
+.btn-seleccionar {
+    background: transparent;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+}
+.btn-seleccionar:hover {
+    background: #ffd700;
+    color: #000;
+}
+
+/* Botón Pagar */
+.btn-pagar {
+    background: #ffd700;
+    border: 1px solid #ffd700;
+    color: #000;
+}
+.btn-pagar:hover {
+    background: #cca300;
+    border-color: #cca300;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    background: #1a0505;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+}
+.btn-cancelar:hover {
+    background: #ff3333;
+    color: #fff;
+}
+.fondo-templo {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(15, 5, 5, 0.92)), 
+                      url('../img/fondos/alas-rojas.jpg'); /* Con los dos puntos sale de css/ y entra a img/ */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+/* ==========================================================================
+   ZONA: PIZARRA DE MARCAS PERSONALES (PRs) Y CALCULADORA IMC
+   ========================================================================== */
+
+/* Estructura en dos columnas */
+.pizarra-contenedor {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.columna-formulario {
+    flex: 1;
+    min-width: 320px;
+}
+
+.columna-tabla {
+    flex: 1.5;
+}
+
+/* Botón IMC superior de la tabla */
+.btn-imc {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--neon-dorado);
+    color: #ffffff;
+    padding: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-imc:hover {
+    background-color: var(--neon-dorado);
+    color: #000000;
+    box-shadow: 0 0 15px var(--neon-dorado);
+}
+
+/* Botón Registrar PR */
+.btn-registrar {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #ff4d4d;
+    color: #ffffff;
+    padding: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-registrar:hover {
+    background-color: rgba(255, 77, 77, 0.2);
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+/* El Modal del IMC (Fondo oculto) */
+.modal-overlay-imc {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(3px);
+}
+
+.modal-overlay-imc.activo {
+    display: block;
+}
+
+/* Caja de contenido del Modal IMC */
+.modal-caja-imc {
+    background-color: #101010;
+    margin: 12% auto;
+    padding: 30px;
+    border: 1px solid var(--neon-dorado);
+    border-top: 3px solid var(--neon-dorado);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+.cerrar-modal-imc {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #888;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.cerrar-modal-imc:hover { 
+    color: var(--neon-rojo); 
+}
+
+.subtitulo-modal-imc {
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 1px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.btn-calcular-modal {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid var(--neon-dorado);
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn-calcular-modal:hover {
+    background: var(--neon-dorado);
+    color: #000000;
+}
+
+/* Caja de Resultados del IMC */
+.resultado-imc-caja {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 2px solid var(--neon-dorado);
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+.resultado-imc-caja p {
+    margin: 5px 0;
+}
+
+/* Clases de colores para los estados del IMC */
+.estado-verde { color: #00ff66; font-weight: bold; text-shadow: 0 0 5px rgba(0,255,102,0.3); }
+.estado-amarillo { color: #ffcc00; font-weight: bold; text-shadow: 0 0 5px rgba(255,204,0,0.3); }
+.estado-rojo { color: #ff4d4d; font-weight: bold; text-shadow: 0 0 5px rgba(255,77,77,0.3); }
+.estado-azul { color: #33ccff; font-weight: bold; text-shadow: 0 0 5px rgba(51,204,255,0.3); }
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 900px) {
+    .pizarra-contenedor {
+        flex-direction: column;
+    }
+    .columna-formulario, .columna-tabla {
+        width: 100%;
+    }
+}

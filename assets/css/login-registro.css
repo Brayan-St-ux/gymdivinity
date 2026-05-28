@@ -1,0 +1,206 @@
+:root {
+    --fondo-oscuro: #0a0a0a;
+    --caja-transparente: rgba(8, 8, 8, 0.92); /* Un toque más oscuro para que se lea el texto sobre las alas */
+    --neon-rojo: #ff0000;
+    --neon-dorado: #ffd700;
+    --borde-fino: rgba(255, 255, 255, 0.08);
+    --texto-gris: #b3b3b3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--fondo-oscuro);
+    /* Inyección de tu nueva imagen de fondo oficial con un degradado protector */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('../img/fondos/alas-rojas.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Ajuste al contenedor para soportar el formulario extendido de entrenador */
+.contenedor-login {
+    background: var(--caja-transparente);
+    border: 1px solid var(--borde-fino);
+    border-top: 3px solid var(--neon-rojo);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 0, 0, 0.15);
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 30px;
+    border-radius: 4px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+/* Logo Oficial */
+.logo-zona {
+    margin-bottom: 15px;
+}
+
+.logo-hardcore {
+    max-width: 110px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid var(--borde-fino);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Tipografías de Impacto */
+.titulo-gótico {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--neon-dorado); /* El toque dorado que pediste */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Formularios adaptativos */
+.formulario-gótico {
+    text-align: left;
+}
+
+.grupo-input {
+    margin-bottom: 22px;
+}
+
+.grupo-input label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: var(--texto-gris);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.grupo-input input {
+    width: 100%;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid var(--borde-fino);
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Área de inputs de texto largo para la propuesta del entrenador */
+.grupo-input textarea {
+    width: 100%;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid var(--borde-fino);
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+    height: 100px;
+}
+
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: var(--neon-rojo);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+    background: rgba(30, 30, 30, 0.9);
+}
+
+/* Botón de acción con Brillo Neón */
+.boton-neon {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--neon-rojo);
+    color: #ffffff;
+    padding: 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+    box-shadow: inset 0 0 0 rgba(255, 0, 0, 0);
+}
+
+.boton-neon:hover {
+    background: var(--neon-rojo);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4), inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Avisos y Errores */
+.alerta-error {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid var(--neon-rojo);
+    color: #ff4d4d;
+    font-size: 0.75rem;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Pie de pantalla */
+.enlaces-pie {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: var(--texto-gris);
+}
+
+.link-neon {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.link-neon:hover {
+    color: var(--neon-rojo);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* DISEÑO COMPATIBLE CON CELULARES (Responsive Design) */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    .contenedor-login {
+        padding: 30px 20px;
+    }
+    .titulo-gótico {
+        font-size: 1.7rem;
+    }
+}
+.alerta-exito {
+    background: rgba(0, 255, 0, 0.08);
+    border: 1px solid #00ff00;
+    color: #4df44d;
+    font-size: 0.75rem;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: center;
+}
